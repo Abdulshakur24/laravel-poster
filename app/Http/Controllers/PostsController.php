@@ -9,16 +9,13 @@ use Inertia\Inertia;
 
 class PostsController extends Controller
 {
-    // show all posts
     public function index()
     {
-        // dd(Posts::latest()->filter(request(['tag', 'search']))->paginate(10));
         return Inertia::render('Home', [
             'posts' => Posts::latest()->filter(request(['tag', 'search']))->paginate(6)
         ]);
     }
 
-    // show single post
     public function show(Posts $post)
     {
         return Inertia::render('Show', [
@@ -26,7 +23,7 @@ class PostsController extends Controller
         ]);
     }
 
-    public function create(Request $request)
+    public function create()
     {
         return Inertia::render('Create', [
             'postings' => Posts::latest()->filter(request(['tag', 'search']))->get()
@@ -54,18 +51,20 @@ class PostsController extends Controller
         Posts::create($formField);
 
         session()->flash('flash.banner', 'Post created!');
-        return redirect('/posts/create',);
+        return redirect('/',);
     }
 
-    public function edit(Posts $postings)
+    public function edit(Posts $post)
     {
-        return Inertia::render('Edit', ['listing' => $postings]);
+        return Inertia::render('Edit', ['post' => $post]);
     }
 
-    public function update(Request $request, Posts $postings)
+    public function update(Request $request, Posts $post)
     {
 
-        if ($postings->user_id != auth()->id()) {
+        if ($post->user_id != auth()->id()) {
+            session()->flash('flash.banner', 'Unauthorized Action');
+            session()->flash('flash.bannerStyle', 'danger');
             abort(403, 'Unauthorized Action');
         }
 
@@ -85,22 +84,23 @@ class PostsController extends Controller
 
         $formField['user_id'] = auth()->id();
 
-        $postings->update($formField);
+        $post->update($formField);
 
-        return back()->with('message', 'Post updated successfully.');
+        session()->flash('flash.banner', 'Post successfully updated.');
+        return back();
     }
 
-    public function delete(Posts $postings)
+    public function delete(Posts $post)
     {
-        if ($postings->user_id != auth()->id()) {
+        if ($post->user_id != auth()->id()) {
             session()->flash('flash.banner', 'Unauthorized Action');
             session()->flash('flash.bannerStyle', 'danger');
             return abort(403, 'Unauthorized Action');
         }
 
-        $postings->delete();
+        $post->delete();
         session()->flash('flash.banner', 'Post deleted successfully.');
-        return redirect('/', 201);
+        return redirect('/',);
     }
 
     public function manage()
