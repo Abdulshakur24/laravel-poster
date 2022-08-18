@@ -10,16 +10,16 @@ class Posts extends Model
     use HasFactory;
 
 
-    // protected $fillable = [
-    //     '',
-    //     'company',
-    //     'title',
-    //     'location',
-    //     'email',
-    //     'website',
-    //     'tags',
-    //     'description',
-    // ];
+    protected $fillable = [
+        'user_id',
+        'company',
+        'title',
+        'location',
+        'email',
+        'website',
+        'tags',
+        'description',
+    ];
 
     public function scopeFilter($query, array $filters)
     {
