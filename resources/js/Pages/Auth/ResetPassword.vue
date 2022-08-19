@@ -29,61 +29,63 @@ const submit = () => {
 <template>
     <Head title="Reset Password" />
 
-    <JetAuthenticationCard>
-        <template #logo>
-            <JetAuthenticationCardLogo />
-        </template>
+    <div class="mx-auto max-w-lg">
+        <JetAuthenticationCard class="mx-4">
+            <template #logo>
+                <JetAuthenticationCardLogo />
+            </template>
 
-        <JetValidationErrors class="mb-4" />
+            <JetValidationErrors class="mb-4" />
 
-        <form @submit.prevent="submit">
-            <div>
-                <JetLabel for="email" value="Email" />
-                <JetInput
-                    id="email"
-                    v-model="form.email"
-                    type="email"
-                    class="mt-1 block w-full"
-                    required
-                    autofocus
-                />
-            </div>
+            <form @submit.prevent="submit">
+                <div>
+                    <JetLabel for="email" value="Email" />
+                    <JetInput
+                        id="email"
+                        v-model="form.email"
+                        type="email"
+                        class="mt-1 block w-full"
+                        required
+                        autofocus
+                    />
+                </div>
 
-            <div class="mt-4">
-                <JetLabel for="password" value="Password" />
-                <JetInput
-                    id="password"
-                    v-model="form.password"
-                    type="password"
-                    class="mt-1 block w-full"
-                    required
-                    autocomplete="new-password"
-                />
-            </div>
+                <div class="mt-4">
+                    <JetLabel for="password" value="Password" />
+                    <JetInput
+                        id="password"
+                        v-model="form.password"
+                        type="password"
+                        class="mt-1 block w-full"
+                        required
+                        autocomplete="new-password"
+                    />
+                </div>
 
-            <div class="mt-4">
-                <JetLabel
-                    for="password_confirmation"
-                    value="Confirm Password"
-                />
-                <JetInput
-                    id="password_confirmation"
-                    v-model="form.password_confirmation"
-                    type="password"
-                    class="mt-1 block w-full"
-                    required
-                    autocomplete="new-password"
-                />
-            </div>
+                <div class="mt-4">
+                    <JetLabel
+                        for="password_confirmation"
+                        value="Confirm Password"
+                    />
+                    <JetInput
+                        id="password_confirmation"
+                        v-model="form.password_confirmation"
+                        type="password"
+                        class="mt-1 block w-full"
+                        required
+                        autocomplete="new-password"
+                    />
+                </div>
 
-            <div class="flex items-center justify-end mt-4">
-                <JetButton
-                    :class="{ 'opacity-25': form.processing }"
-                    :disabled="form.processing"
-                >
-                    Reset Password
-                </JetButton>
-            </div>
-        </form>
-    </JetAuthenticationCard>
+                <div class="flex items-center justify-end mt-4">
+                    <JetButton
+                        :class="{ 'opacity-25': form.processing }"
+                        :disabled="form.processing"
+                    >
+                        Reset Password
+                    </JetButton>
+                </div>
+            </form>
+        </JetAuthenticationCard>
+    </div>
 </template>
