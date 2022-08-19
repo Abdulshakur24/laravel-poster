@@ -16,9 +16,10 @@ defineProps({
 <template>
     <AppLayout title="Profile">
         <template #header>
-            <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+            <h2 class="font-semibold text-xl dark:text-gray-50 leading-tight">
                 Profile
             </h2>
+            <JetSectionBorder />
         </template>
 
         <div>
