@@ -16,7 +16,6 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [PostsController::class, 'index'])->name('home');
 
-
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
@@ -42,5 +41,6 @@ Route::middleware([
     Route::get('/posts/manage', [PostsController::class, 'manage'])->name('mangage');
 
     // render listing page
-    Route::get('/posts/{post}', [PostsController::class, 'show']);
 });
+
+Route::get('/posts/{post}', [PostsController::class, 'show']);
