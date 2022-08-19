@@ -52,7 +52,7 @@ const closeModal = () => {
         </template>
 
         <template #content>
-            <div class="max-w-xl text-sm text-gray-600">
+            <div class="max-w-xl text-sm text-gray-600 dark:text-gray-300">
                 If necessary, you may log out of all of your other browser
                 sessions across all of your devices. Some of your recent
                 sessions are listed below; however, this list may not be
@@ -101,7 +101,7 @@ const closeModal = () => {
                     </div>
 
                     <div class="ml-3">
-                        <div class="text-sm text-gray-600">
+                        <div class="text-sm text-gray-600 dark:text-gray-300">
                             {{
                                 session.agent.platform
                                     ? session.agent.platform
@@ -145,12 +145,18 @@ const closeModal = () => {
 
             <!-- Log Out Other Devices Confirmation Modal -->
             <JetDialogModal :show="confirmingLogout" @close="closeModal">
-                <template #title> Log Out Other Browser Sessions </template>
+                <template #title>
+                    <h2 class="text-gray-700 dark:text-gray-200">
+                        Log Out Other Browser Sessions
+                    </h2>
+                </template>
 
                 <template #content>
-                    Please enter your password to confirm you would like to log
-                    out of your other browser sessions across all of your
-                    devices.
+                    <p class="text-gray-600 dark:text-gray-300">
+                        Please enter your password to confirm you would like to
+                        log out of your other browser sessions across all of
+                        your devices.
+                    </p>
 
                     <div class="mt-4">
                         <JetInput

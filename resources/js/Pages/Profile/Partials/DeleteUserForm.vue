@@ -44,7 +44,7 @@ const closeModal = () => {
         <template #description> Permanently delete your account. </template>
 
         <template #content>
-            <div class="max-w-xl text-sm text-gray-600">
+            <div class="max-w-xl text-sm text-gray-600 dark:text-gray-300">
                 Once your account is deleted, all of its resources and data will
                 be permanently deleted. Before deleting your account, please
                 download any data or information that you wish to retain.
@@ -58,13 +58,20 @@ const closeModal = () => {
 
             <!-- Delete Account Confirmation Modal -->
             <JetDialogModal :show="confirmingUserDeletion" @close="closeModal">
-                <template #title> Delete Account </template>
+                <template #title>
+                    <h2 class="text-slate-900 dark:text-slate-100">
+                        Delete Account
+                    </h2>
+                </template>
 
                 <template #content>
-                    Are you sure you want to delete your account? Once your
-                    account is deleted, all of its resources and data will be
-                    permanently deleted. Please enter your password to confirm
-                    you would like to permanently delete your account.
+                    <p class="text-gray-600 dark:text-gray-300">
+                        Are you sure you want to delete your account? Once your
+                        account is deleted, all of its resources and data will
+                        be permanently deleted. Please enter your password to
+                        confirm you would like to permanently delete your
+                        account.
+                    </p>
 
                     <div class="mt-4">
                         <JetInput
