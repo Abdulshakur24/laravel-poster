@@ -80,11 +80,15 @@ const closeModal = () => {
 
         <JetDialogModal :show="confirmingPassword" @close="closeModal">
             <template #title>
-                {{ title }}
+                <h2 class="text-gray-700 dark:text-gray-200">
+                    {{ title }}
+                </h2>
             </template>
 
             <template #content>
-                {{ content }}
+                <p class="text-gray-600 dark:text-gray-300">
+                    {{ content }}
+                </p>
 
                 <div class="mt-4">
                     <JetInput

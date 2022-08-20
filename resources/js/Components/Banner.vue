@@ -16,11 +16,11 @@ watch(message, async () => {
 </script>
 
 <template>
-    <div>
+    <div class="fixed left-0 top-0 right-0 mx-auto z-40">
         <div
             v-if="show && message"
             :class="{
-                'bg-indigo-500': style == 'success',
+                'bg-slate-300 dark:bg-slate-900': style == 'success',
                 'bg-red-700': style == 'danger',
             }"
         >
@@ -30,7 +30,8 @@ watch(message, async () => {
                         <span
                             class="flex p-2 rounded-lg"
                             :class="{
-                                'bg-indigo-600': style === 'success',
+                                'bg-gray-600 dark:bg-slate-700':
+                                    style === 'success',
                                 'bg-red-600': style === 'danger',
                             }"
                         >
@@ -67,7 +68,9 @@ watch(message, async () => {
                             </svg>
                         </span>
 
-                        <p class="ml-3 font-medium text-sm text-white truncate">
+                        <p
+                            class="ml-3 font-medium text-sm text-slate-900 dark:text-slate-50 truncate"
+                        >
                             {{ message }}
                         </p>
                     </div>
@@ -77,7 +80,7 @@ watch(message, async () => {
                             type="button"
                             class="-mr-1 flex p-2 rounded-md focus:outline-none sm:-mr-2 transition"
                             :class="{
-                                'hover:bg-indigo-600 focus:bg-indigo-600':
+                                'hover:bg-slate-600 focus:bg-slate-600':
                                     style == 'success',
                                 'hover:bg-red-600 focus:bg-red-600':
                                     style == 'danger',
@@ -86,7 +89,7 @@ watch(message, async () => {
                             @click.prevent="show = false"
                         >
                             <svg
-                                class="h-5 w-5 text-white"
+                                class="h-5 w-5 text-slate-900 dark:text-white"
                                 xmlns="http://www.w3.org/2000/svg"
                                 fill="none"
                                 viewBox="0 0 24 24"
